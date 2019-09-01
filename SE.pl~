@@ -2,20 +2,44 @@
 
 :- dynamic(respuestas/1).
 
+causas():-
+    write('Hay varias causas que pueden ocasionar que su impresora no funcione:'), nl,
+    causa(C),
+    write(C), nl,
+    fail.
+
 problema(imp_sin_elec):-
     busca_pregunta_no(imp_con_elec), !.
+
+problema(no_drivers):-
+    busca_pregunta_si(prim_vez),
+    busca_pregunta_no(drivers), !.
 
 problema(imp_sin_inter):-
     busca_pregunta_si(wifi),
     busca_pregunta_no(imp_con_inter), !.
 
-problema(eje):-
-    busca_pregunta_si(wifi), !.
+problema(sin_tinta):-
+    busca_pregunta_no(tinta), !.
+
+problema(mal_cable):-
+    busca_pregunta_no(cable), !.
+
+problema(componente_malo):-
+    busca_pregunta_si(liquido),
+    busca_pregunta_si(imp_con_elec),
+    busca_pregunta_no(enciende), !.
+
+problema(sucia):-
+    busca_pregunta_si(sonido),
+    busca_pregunta_no(polvo), !.
+
+problema(sin_resp).
 
 busca_pregunta_no(PC):-
     respuestas(L),
     buscar_respondido(PC, R, L), !,
-    consultar_aux('No', R).
+    consultar_aux(no, R).
 
 busca_pregunta_no(PC):-
     pregunta(PC, P),
@@ -24,7 +48,7 @@ busca_pregunta_no(PC):-
 busca_pregunta_si(PC):-
     respuestas(L),
     buscar_respondido(PC, R, L), !,
-    consultar_aux('Si', R).
+    consultar_aux(si, R).
 
 busca_pregunta_si(PC):-
     pregunta(PC, P),
@@ -37,7 +61,7 @@ consultar_no(PC, P):-
     concatenar(L, [PC, R], NL),
     retractall(respuestas(_)),
     assert(respuestas(NL)),
-    consultar_aux('No', R).
+    consultar_aux(no, R).
 
 consultar_si(PC, P):-
     write(P), nl,
@@ -46,18 +70,17 @@ consultar_si(PC, P):-
     concatenar(L, [PC, R], NL),
     retractall(respuestas(_)),
     assert(respuestas(NL)),
-    consultar_aux('Si', R).
+    consultar_aux(si, R).
 
 consultar_aux(R, R).
 
 solucionador():-
-    write('Responda solamente con un Si. o No. a las siguientes preguntas:'), nl,
+    write('Responda solamente con un si. o no. a las siguientes preguntas:'), nl,
     retractall(respuestas(_)),
     assert(respuestas([])),
     problema(P),
     respuesta(P, R),
-    write(R), nl,
-    retract(respuestas(_)).
+    write(R), nl.
 
 concatenar([], L, L).
 concatenar([X|C1], L2, [X|C2]):-

@@ -2,15 +2,47 @@
 
 :- dynamic(respuestas/1).
 
+causas():-
+    write('Hay varias causas que pueden ocasionar que su impresora no funcione:'), nl,
+    causa(C),
+    write(C), nl,
+    fail.
+
 problema(imp_sin_elec):-
     busca_pregunta_no(imp_con_elec), !.
+
+problema(no_drivers):-
+    busca_pregunta_si(prim_vez),
+    busca_pregunta_no(drivers), !.
 
 problema(imp_sin_inter):-
     busca_pregunta_si(wifi),
     busca_pregunta_no(imp_con_inter), !.
 
-problema(eje):-
-    busca_pregunta_si(wifi), !.
+problema(sin_tinta):-
+    busca_pregunta_no(tinta), !.
+
+problema(mal_cable):-
+    busca_pregunta_no(cable), !.
+
+problema(componente_malo):-
+    busca_pregunta_si(liquido),
+    busca_pregunta_si(imp_con_elec),
+    busca_pregunta_no(enciende), !.
+
+problema(sucia):-
+    busca_pregunta_si(sonido),
+    busca_pregunta_no(polvo), !.
+
+problema(cambio_papel):-
+    busca_pregunta_si(sonido),
+    busca_pregunta_no(papel), !.
+
+problema(sucia):-
+    busca_pregunta_si(imp_borrosa),
+    busca_pregunta_no(polvo), !.
+
+problema(sin_resp).
 
 busca_pregunta_no(PC):-
     respuestas(L),
@@ -56,8 +88,7 @@ solucionador():-
     assert(respuestas([])),
     problema(P),
     respuesta(P, R),
-    write(R), nl,
-    retract(respuestas(_)).
+    write(R), nl.
 
 concatenar([], L, L).
 concatenar([X|C1], L2, [X|C2]):-
