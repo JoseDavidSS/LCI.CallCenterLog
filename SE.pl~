@@ -34,6 +34,14 @@ problema(sucia):-
     busca_pregunta_si(sonido),
     busca_pregunta_no(polvo), !.
 
+problema(cambio_papel):-
+    busca_pregunta_si(sonido),
+    busca_pregunta_no(papel), !.
+
+problema(sucia):-
+    busca_pregunta_si(imp_borrosa),
+    busca_pregunta_no(polvo), !.
+
 problema(sin_resp).
 
 busca_pregunta_no(PC):-

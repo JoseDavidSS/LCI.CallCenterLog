@@ -18,6 +18,7 @@ pregunta(sonido, '¿Su impresora suena mal cuando se mueve?').
 pregunta(enciende, '¿Su impresora enciende?').
 pregunta(papel, '¿El papel usado se encuentra en buenas condiciones?').
 pregunta(imp_borrosa, '¿Su impresión se ve borrosa?').
+pregunta(imp_vieja, 'Impresora vieja?').
 
 respuesta(imp_sin_elec, 'Proceda a conectar su impresora a un tomacorriente.').
 respuesta(no_drivers, 'Proceda a instalar los drivers de su impresora').
@@ -28,4 +29,10 @@ respuesta(componente_malo, 'Debe llevar su impresora a ser reparada, posiblement
 respuesta(sucia, 'Debe limpiar su impresora.').
 respuesta(cambio_papel, 'Proceda a cambiar el tipo de papel utilizado.').
 respuesta(sin_resp, 'El sistema no es capaz de atender su duda. Contacte un experto.').
+
+
+
+
+
+
 
