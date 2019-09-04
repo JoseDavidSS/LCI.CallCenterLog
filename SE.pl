@@ -42,6 +42,18 @@ problema(sucia):-
     busca_pregunta_si(imp_borrosa),
     busca_pregunta_no(polvo), !.
 
+problema(desalineado):-
+    busca_pregunta_si(imp_borrosa),
+    busca_pregunta_si(cabezales), !.
+
+problema(mensaje):-
+    busca_pregunta_si(errores),
+    busca_pregunta_si(pantalla_mensajes), !.
+
+problema(alarmas):-
+    busca_pregunta_si(errores),
+    busca_pregunta_si(alarmas_leds), !.
+
 problema(sin_resp).
 
 busca_pregunta_no(PC):-

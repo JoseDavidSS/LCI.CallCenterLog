@@ -4,6 +4,7 @@ causa('- La impresora no está en la misma red que su computadora.').
 causa('- Su impresora no tiene tinta.').
 causa('- El cable de su impresora esta dañado').
 causa('- Su impresora puede estar sucia, por lo que se debe limpiar.').
+causa('- Los cabezales pueden estar desalineados.').
 
 pregunta(imp_con_elec, '¿Revisó que la impresora se encuentre conectada?').
 pregunta(prim_vez, '¿Es la primera vez que utiliza la impresora?').
@@ -18,7 +19,11 @@ pregunta(sonido, '¿Su impresora suena mal cuando se mueve?').
 pregunta(enciende, '¿Su impresora enciende?').
 pregunta(papel, '¿El papel usado se encuentra en buenas condiciones?').
 pregunta(imp_borrosa, '¿Su impresión se ve borrosa?').
-pregunta(imp_vieja, 'Impresora vieja?').
+pregunta(imp_vieja, '¿Impresora vieja?').
+pregunta(cabezales, '¿La impresión aparece desalineada?').
+pregunta(errores, '¿La impresora está encendida pero sigue sin funcionar?').
+pregunta(pantalla_mensajes, '¿La impresora posee pantalla?').
+pregunta(alarmas_leds, '¿La impresora presenta una alarma o leds que comunmente no están activados?').
 
 respuesta(imp_sin_elec, 'Proceda a conectar su impresora a un tomacorriente.').
 respuesta(no_drivers, 'Proceda a instalar los drivers de su impresora').
@@ -29,6 +34,10 @@ respuesta(componente_malo, 'Debe llevar su impresora a ser reparada, posiblement
 respuesta(sucia, 'Debe limpiar su impresora.').
 respuesta(cambio_papel, 'Proceda a cambiar el tipo de papel utilizado.').
 respuesta(sin_resp, 'El sistema no es capaz de atender su duda. Contacte un experto.').
+respuesta(desalineado, 'Debe reajustar los cabezales en configuraciones de impresora.').
+respuesta(mensaje, 'Siga las instrucciones que aparecen en la pantalla de su impresora').
+respuesta(alarmas, 'Lea el manual de usuario sobre esta alarma o luz indicadora').
+
 
 
 
