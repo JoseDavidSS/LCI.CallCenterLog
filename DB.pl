@@ -1,4 +1,6 @@
-causa('- Su impresora no está concetada.').
+% Hechos que mencionan algunas causas de problemas que puede tener la
+% impresora.
+causa('- Su impresora no está conectada.').
 causa('- No tiene los drivers instalados.').
 causa('- La impresora no está en la misma red que su computadora.').
 causa('- Su impresora no tiene tinta.').
@@ -6,6 +8,10 @@ causa('- El cable de su impresora esta dañado').
 causa('- Su impresora puede estar sucia, por lo que se debe limpiar.').
 causa('- Los cabezales pueden estar desalineados.').
 
+% Hechos que contienen las preguntas que el sistema le realizará al
+% usuario, está constituido por la palabra clave del problema (solo lo
+% ve el programa) y la oración del problema que será imprimida para
+% mostrarsela al usuario.
 pregunta(imp_con_elec, '¿Revisó que la impresora se encuentre conectada?').
 pregunta(prim_vez, '¿Es la primera vez que utiliza la impresora?').
 pregunta(drivers, '¿Ya instaló los drivers de su impresora?').
@@ -25,6 +31,10 @@ pregunta(errores, '¿La impresora está encendida pero sigue sin funcionar?').
 pregunta(pantalla_mensajes, '¿La impresora posee pantalla?').
 pregunta(alarmas_leds, '¿La impresora presenta una alarma o leds que comunmente no están activados?').
 
+% Hechos que contienen las respuestas que el sistema le mostrará al
+% usuario en caso de encontrar un problema, está constituido por la
+% palabra clave de la solución (solo lo ve el programa) y la oración de
+% la solución que mostrará el programa.
 respuesta(imp_sin_elec, 'Proceda a conectar su impresora a un tomacorriente.').
 respuesta(no_drivers, 'Proceda a instalar los drivers de su impresora').
 respuesta(imp_sin_inter, 'Proceda a conectar su impresora a la red.').

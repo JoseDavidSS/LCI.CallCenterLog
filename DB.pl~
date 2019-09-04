@@ -21,6 +21,9 @@ pregunta(papel, '¿El papel usado se encuentra en buenas condiciones?').
 pregunta(imp_borrosa, '¿Su impresión se ve borrosa?').
 pregunta(imp_vieja, '¿Impresora vieja?').
 pregunta(cabezales, '¿La impresión aparece desalineada?').
+pregunta(errores, '¿La impresora está encendida pero sigue sin funcionar?').
+pregunta(pantalla_mensajes, '¿La impresora posee pantalla?').
+pregunta(alarmas_leds, '¿La impresora presenta una alarma o leds que comunmente no están activados?').
 
 respuesta(imp_sin_elec, 'Proceda a conectar su impresora a un tomacorriente.').
 respuesta(no_drivers, 'Proceda a instalar los drivers de su impresora').
@@ -32,6 +35,9 @@ respuesta(sucia, 'Debe limpiar su impresora.').
 respuesta(cambio_papel, 'Proceda a cambiar el tipo de papel utilizado.').
 respuesta(sin_resp, 'El sistema no es capaz de atender su duda. Contacte un experto.').
 respuesta(desalineado, 'Debe reajustar los cabezales en configuraciones de impresora.').
+respuesta(mensaje, 'Siga las instrucciones que aparecen en la pantalla de su impresora').
+respuesta(alarmas, 'Lea el manual de usuario sobre esta alarma o luz indicadora').
+
 
 
 
