@@ -36,12 +36,12 @@
 ........:::..:::::..:::::..::::::.......::::......:::
 
 */
-%Estos son los prosustantivos que posee la base de datos
-prosustantivo_interrogativo([como]).
-prosustantivo_interrogativo([donde]).
-prosustantivo_interrogativo([por-que]).
-prosustantivo_interrogativo([que]).
-prosustantivo_interrogativo([cuales]).
+%Estos son los pronombres que posee la base de datos
+pronombre_interrogativo([como]).
+pronombre_interrogativo([donde]).
+pronombre_interrogativo([por-que]).
+pronombre_interrogativo([que]).
+pronombre_interrogativo([cuales]).
 %Estos son los Articulos que posee la base de datos
 articulo(singular,masculino,[el]).
 articulo(plural,masculino,[los]).
@@ -66,7 +66,7 @@ sustantivo(singular,femenino,[gata]).
 sustantivo(plural,masculino,[gatos]).
 sustantivo(plural,femenino,[gatas]).
 sustantivo(singular,masculino,[pescado]).
-sustantivo(singular,femenino,[mala]).
+%sustantivo(singular,femenino,[mala]).
 sustantivo(singular,femenino,[mierda]).
 sustantivo(singular,femenino,[impresora]).
 %Estas son los verbos que posee la base de datos
@@ -78,6 +78,7 @@ verbo(singular,[es]).
 verbo(singular,[comen]).
 %Estos son los adjetivo que posee la base de datos
 adjetivo(singular,masculino,[malo]).
+adjetivo(singular,femenino,[mala]).
 adjetivo(plural,masculino,[malos]).
 adjetivo(singular,femenino,[mala]).
 adjetivo(singular,femenino,[rota]).
@@ -108,7 +109,7 @@ sinonimo(mala,[mierda,jodido,mala]).
 sinonimo(causas,[razones,causas,problemas,inconvenientes]).
 /*
 pregunta(Oracion):-
-    prosustantivo_interrogativo(P),
+    pronombre_interrogativo(P),
     verbo(Y,V),
     sustantivo(Y,X,N),
     append(P,V,N,Oracion),!.
@@ -116,27 +117,49 @@ pregunta(Oracion):-
 
 sintagma_nexo(Nexo) :-
     adverbio(A),
-    conjucion(C),
-    append(V,SN,SV).
+    articulo(X,Y,C),
+    append(A,C,Nexo).
+%*************************************************************************
+ sintagma_segundaparte(SP):-
+    sustantivo(X,Y,S),
+    adjetivo(X,Y,A),
+    append(S,A,SP).
 
 sintagma_interrogativo(SI):-
-    prosustantivo_interrogativo(P),
-    sustantivo(Y,X,N),verbo(Y,V),
+    pronombre_interrogativo(P),
+    verbo(Y,V),
     append(P,V,SI).
 
+sintagma_interrogativo(SI):-
+    pronombre_interrogativo(P),
+    sustantivo(X,Y,S),
+    append(P,S,SI).
+
+sintagma_parte1(P1):-
+    sustantivo(X,Y,S),
+    verbo(X,V),
+    append(S,V,P1).
+
 sintagma_predicado1(Oracion):-
-    sintagma_interrogativo(SI),
-    sintagma_nominal(SN),
-    append(SI,SN,Oracion).
+    sintagma_interrogativo(P),
+    sintagma_nominal(SV),
+    append(P,SV,Oracion).
 
-sintagma_predicado2(Oracion):-
-    sintagma_nexo(Nexo),
-    oracion(O),
-    append(Nexo,O,Oracion).
+sintagma_predicado1(Oracion):-
+    pronombre_interrogativo(P),
+    sintagma_parte1(S1),
+    append(P,S1,Oracion).
 
-sintagma_predicado_inicial(SPI):-
-    pregunta(Pregunta),
-    conjucion(C).
+sintagma_predicado2(Predicado2):-
+    sintagma_nexo(N),
+    sintagma_segundaparte(P2),
+    append(N,P2,Predicado2).
+
+
+sintagma_preguntaCompleja(PC):-
+    sintagma_predicado1(S1),
+    sintagma_predicado2(S2),
+    append(S1,S2,PC).
 
 pregunta(Oracion):-
     sintagma_interrogativo(SI),
@@ -145,27 +168,18 @@ pregunta(Oracion):-
 
 sintagma_nominal(SN) :- sustantivo(Y,X,SN).
 sintagma_nominal(SN) :- articulo(Y,X,A),sustantivo(Y,X,N),append(A,N,SN).
-<<<<<<< HEAD
 
-
-=======
-/*
->>>>>>> BDD
 sintagma_verbal(SV) :-
     verbo(Y,V),
     adjetivo(Y,X,Z),
-    append(V,Z,SV).
-<<<<<<< HEAD
-=======
-*/
->>>>>>> BDD
+    append(V,Z,SV)
+    .
 
-/*
 sintagma_verbal(SV) :-
     verbo(Y,V),
     sintagma_nominal(SN),
     append(V,SN,SV).
-*/
+
 oracion(O) :-
     sintagma_nominal(SN),
     sintagma_verbal(SV),
@@ -203,12 +217,3 @@ final_de_conversacion(O):-
 
 final_de_conversacion(O):-
     write('Escriba bien'), nl, fail.
-<<<<<<< HEAD
-
-miembro(X, [X|_]).
-miembro(X, [_|R]):-
-    miembro(X, R).
-
-
-=======
->>>>>>> BDD
