@@ -20,6 +20,7 @@
 */
 
 :- consult('./db.pl').
+:- consult('./readin.pl').
 
 :- dynamic(respuestas/1).
 
@@ -31,12 +32,12 @@ causas():-
     write(C), nl,
     fail.
 
-% Regla que se encarga de iniciar el proceso de bï¿½squeda de una soluciï¿½n
-% a un problema del usuario, se encarga de reiniciar la lista de
-% respuestas y ademas retorna e imprime la soluciï¿½n al problema del
+% Regla que se encarga de iniciar el proceso de busqueda de una
+% solucion a un problema del usuario, se encarga de reiniciar la lista
+% de respuestas y ademas retorna e imprime la solucion al problema del
 % usuario.
 solucionador():-
-    write('Responda solamente con un si. o no. a las siguientes preguntas:'), nl,
+    write('Responda solamente con un Si. o No. a las siguientes preguntas:'), nl,
     retractall(respuestas(_)),
     assert(respuestas([])),
     problema(P),
@@ -62,7 +63,7 @@ busca_pregunta(PalabraClave, RespuestaEsperada):-
 % respuesta.
 consultar(PalabraClave, Problema, RespuestaEsperada):-
     write(Problema), nl,
-    read(Respuesta), nl,
+    leer_input([Respuesta|_]),
     respuestas(Lista),
     concatenar(Lista, [PalabraClave, Respuesta], NuevaLista),
     retractall(respuestas(_)),
@@ -91,13 +92,18 @@ miembro(X, [_|R]):-
 % Regla que se encarga de leer un entrada del usuario y la retorna como
 % una lista, donde cada elemento es una palabra de la oración del
 % usuario.
-leer_input(Lista):-
-    read_line_to_codes(user_input, Caracteres),
-    atom_codes(Oracion, Caracteres),
-    downcase_atom(Oracion, OracionMinusculas),
-    atomic_list_concat(Lista, ' ', OracionMinusculas).
+leer_input(ListaNueva):-
+    read_in(Lista),
+    signos_de_puntuacion(ListaDeSignos),
+    eliminar_signo_de_lista(Lista, ListaDeSignos, ListaNueva).
 
-eliminar_caracter(Oracion, Borrar, Resultado) :-
-    atom_concat(Elemento, Respaldo, Oracion),
-    atom_concat(Borrar, Resto, Respaldo),
-    atom_concat(Elemento, Resto, Resultado).
+eliminar_signo_de_lista([], _, _).
+eliminar_signo_de_lista([Elemento|Lista], [], [Elemento|ListaNueva]):-
+    signos_de_puntuacion(ListaDeSignos),
+    eliminar_signo_de_lista(Lista, ListaDeSignos, ListaNueva).
+eliminar_signo_de_lista([Signo|Lista], [Signo|_], ListaNueva):-
+    signos_de_puntuacion(ListaDeSignos),
+    eliminar_signo_de_lista(Lista, ListaDeSignos, ListaNueva).
+eliminar_signo_de_lista(Lista, [_|ListaDeSignos], ListaNueva):-
+    eliminar_signo_de_lista(Lista, ListaDeSignos, ListaNueva).
+
