@@ -140,15 +140,18 @@ sintagma_parte1(P1):-
     verbo(X,V),
     append(S,V,P1).
 
+
 sintagma_predicado1(Oracion):-
     sintagma_interrogativo(P),
     sintagma_nominal(SV),
     append(P,SV,Oracion).
 
+
 sintagma_predicado1(Oracion):-
     pronombre_interrogativo(P),
     sintagma_parte1(S1),
     append(P,S1,Oracion).
+
 
 sintagma_predicado2(Predicado2):-
     sintagma_nexo(N),
