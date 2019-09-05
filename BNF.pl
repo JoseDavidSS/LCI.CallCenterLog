@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 
 :- consult('./SE.pl').
+=======
+:- consult('./se.pl').
+>>>>>>> BDD
 
 
 /*
@@ -160,7 +164,7 @@ oracion(O) :-
     append(SN,SV,O), !.
 oracion(O) :-
     write('La oracion esta mal redactada, el formato de oracion es:....'), nl, fail.
-    
+
 inicio_de_conversacion(P):-
     saludo(S),sustantivo(Y,X,N),
     append(S,N,P),
@@ -185,6 +189,7 @@ semi_final_de_conversacion(O):-
     write('No entiendo de que mierdas esta hablando'),nl,fail.
 
 final_de_conversacion(O):-
+<<<<<<< HEAD
     despedidas(D),sustantivo(Y,X,N),
     append(D,N,O),
     write('Fue un placer ayudarlo'),nl,!.
@@ -198,3 +203,11 @@ miembro(X, [_|R]):-
     miembro(X, R).
 
 
+=======
+    despedidas(D),nombre(Y,X,N),
+    append(D,N,P),
+    write('De nada fue un placer ayudarlo'),nl,!.
+
+final_de_conversacion(O):-
+    write('No entiendo de que mierdas esta hablando'),nl,fail.
+>>>>>>> BDD

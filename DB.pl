@@ -48,9 +48,60 @@ respuesta(desalineado, 'Debe reajustar los cabezales en configuraciones de impre
 respuesta(mensaje, 'Siga las instrucciones que aparecen en la pantalla de su impresora').
 respuesta(alarmas, 'Lea el manual de usuario sobre esta alarma o luz indicadora').
 
+% Hechos que contienen las referencias de un problema específico, están
+% constituidos por la palabra clave del problema y el link de la página
+% con la solución a este.
+referencia(imp_sin_elec, 'https://www.yoreparo.com/es/impresoras/preguntas/831836/mi-impresora-no-enciende').
+referencia(no_drivers, 'http://support.ricoh.com/bb_v1oi/pub_e/oi_view/0001032/0001032602/view/Op_Guide/unv/0063.htm').
+referencia(imp_sin_inter, 'https://techlandia.com/arreglar-impresora-conexion-offline-como_15198/').
+referencia(sin_tinta, 'https://files.support.epson.com/htmldocs/xp201_/xp201_ug6/source/printers/source/ink_functions/tasks/xp200/removing_installing_cartridges_xp200.html').
+referencia(mal_cable, 'https://www.steren.com.gt/computacion/cables-usb').
+referencia(componente_malo, 'https://www.mareex.com/soporte-y-servicio/servicios-de-mantenimiento-y-reparacion-de-impresoras').
+referencia(sucia, 'https://es.wikihow.com/limpiar-una-impresora').
+referencia(cambio_papel, 'https://imprentaonline-naturaprint.com/5-tipos-de-papel-imprimir').
+referencia(desalineado, 'https://ugp01.c-ij.com/ij/webmanual/PrinterDriver/W/MG3500%20series/1.0/ES/PPG/dg-c_alignment_auto.html').
+referencia(mensaje, 'http://support.ricoh.com/bb_v1oi/pub_e/oi_view/0001062/0001062644/view/intro/int/0068.htm').
+referencia(alarmas, 'https://www.oki.com/es/printing/support/user-manual/index.html').
 
 
-
+% Reglas de los problemas que puede tener la impresora, se encargan de
+% retornar la solución del problema con base a las respuestas del
+% usuario.
+problema(imp_sin_elec):-
+    busca_pregunta(imp_con_elec, no), !.
+problema(no_drivers):-
+    busca_pregunta(prim_vez, si),
+    busca_pregunta(drivers, no), !.
+problema(imp_sin_inter):-
+    busca_pregunta(wifi, si),
+    busca_pregunta(imp_con_inter, no), !.
+problema(sin_tinta):-
+    busca_pregunta(tinta, no), !.
+problema(mal_cable):-
+    busca_pregunta(cable, no), !.
+problema(componente_malo):-
+    busca_pregunta(liquido, si),
+    busca_pregunta(imp_con_elec, si),
+    busca_pregunta(enciende, no), !.
+problema(sucia):-
+    busca_pregunta(sonido, si),
+    busca_pregunta(polvo, no), !.
+problema(cambio_papel):-
+    busca_pregunta(sonido, si),
+    busca_pregunta(papel, no), !.
+problema(sucia):-
+    busca_pregunta(imp_borrosa, si),
+    busca_pregunta(polvo, no), !.
+problema(desalineado):-
+    busca_pregunta(imp_borrosa, si),
+    busca_pregunta(cabezales, si), !.
+problema(mensaje):-
+    busca_pregunta(errores, si),
+    busca_pregunta(pantalla_mensajes, si), !.
+problema(alarmas):-
+    busca_pregunta(errores, si),
+    busca_pregunta(alarmas_leds, si), !.
+problema(sin_resp).
 
 
 
