@@ -1,26 +1,47 @@
+/*
+:'######::'####::'######::'########:'########:'##::::'##::::'###::::
+'##... ##:. ##::'##... ##:... ##..:: ##.....:: ###::'###:::'## ##:::
+ ##:::..::: ##:: ##:::..::::: ##:::: ##::::::: ####'####::'##:. ##::
+. ######::: ##::. ######::::: ##:::: ######::: ## ### ##:'##:::. ##:
+:..... ##:: ##:::..... ##:::: ##:::: ##...:::: ##. #: ##: #########:
+'##::: ##:: ##::'##::: ##:::: ##:::: ##::::::: ##:.:: ##: ##.... ##:
+. ######::'####:. ######::::: ##:::: ########: ##:::: ##: ##:::: ##:
+:......:::....:::......::::::..:::::........::..:::::..::..:::::..::
+
+
+'########:'##::::'##:'########::'########:'########::'########::'#######::
+ ##.....::. ##::'##:: ##.... ##: ##.....:: ##.... ##:... ##..::'##.... ##:
+ ##::::::::. ##'##::: ##:::: ##: ##::::::: ##:::: ##:::: ##:::: ##:::: ##:
+ ######:::::. ###:::: ########:: ######::: ########::::: ##:::: ##:::: ##:
+ ##...:::::: ## ##::: ##.....::: ##...:::: ##.. ##:::::: ##:::: ##:::: ##:
+ ##:::::::: ##:. ##:: ##:::::::: ##::::::: ##::. ##::::: ##:::: ##:::: ##:
+ ########: ##:::. ##: ##:::::::: ########: ##:::. ##:::: ##::::. #######::
+........::..:::::..::..:::::::::........::..:::::..:::::..::::::.......:::
+*/
+
 :- consult('./db.pl').
 
 :- dynamic(respuestas/1).
 
-% Regla que se encarga de iniciar el proceso de búsqueda de una solución
+% Regla que se encarga de imprimir todas las posibles causas de algun
+% problema.
+causas():-
+    write('Hay varias causas que pueden ocasionar que su impresora no funcione:'), nl,
+    causa(C),
+    write(C), nl,
+    fail.
+
+% Regla que se encarga de iniciar el proceso de bï¿½squeda de una soluciï¿½n
 % a un problema del usuario, se encarga de reiniciar la lista de
-% respuestas y además imprime la solución al problema del
+% respuestas y ademas retorna e imprime la soluciï¿½n al problema del
 % usuario.
 solucionador():-
     write('Responda solamente con un si. o no. a las siguientes preguntas:'), nl,
     retractall(respuestas(_)),
     assert(respuestas([])),
-    problema(Problema),
-    respuesta(Problema, Respuesta),
-    write(Respuesta), nl.
-
-% Regla que se encarga de imprimir todas las posibles causas en caso de
-% algún fallo en la impresora.
-causas():-
-    write('Hay varias causas que pueden ocasionar que su impresora no funcione:'), nl,
-    causa(Causa),
-    write(Causa), nl,
-    fail.
+    problema(P),
+    respuesta(P, R),
+    write(R), nl.
 
 % Regla que se encarga de revisar si una pregunta ha sido respondida
 % previamente por el usuario, para evitar preguntarla nuevamente, además
@@ -74,17 +95,10 @@ leer_input(Lista):-
     read_line_to_codes(user_input, Caracteres),
     atom_codes(Oracion, Caracteres),
     downcase_atom(Oracion, OracionMinusculas),
-    not(revisar_caracteres(OracionMinusculas, OracionFinal)),
+    revisar_caracteres(OracionMinusculas, OracionFinal),
     atomic_list_concat(Lista, ' ', OracionFinal).
 
-revisar_caracteres(Oracion, OracionNueva):-
-    eliminar_caracterer(Oracion, '.', OracionNueva), fail.
-revisar_caracteres(Oracion, OracionNueva):-
-    eliminar_caracterer(Oracion, '?', OracionNueva), fail.
-
-eliminar_caracterer(Oracion, Borrar, Resultado) :-
+eliminar_caracter(Oracion, Borrar, Resultado) :-
     atom_concat(Elemento, Respaldo, Oracion),
     atom_concat(Borrar, Resto, Respaldo),
     atom_concat(Elemento, Resto, Resultado).
-
-

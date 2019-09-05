@@ -64,8 +64,44 @@ referencia(mensaje, 'http://support.ricoh.com/bb_v1oi/pub_e/oi_view/0001062/0001
 referencia(alarmas, 'https://www.oki.com/es/printing/support/user-manual/index.html').
 
 
-
-
+% Reglas de los problemas que puede tener la impresora, se encargan de
+% retornar la solución del problema con base a las respuestas del
+% usuario.
+problema(imp_sin_elec):-
+    busca_pregunta(imp_con_elec, no), !.
+problema(no_drivers):-
+    busca_pregunta(prim_vez, si),
+    busca_pregunta(drivers, no), !.
+problema(imp_sin_inter):-
+    busca_pregunta(wifi, si),
+    busca_pregunta(imp_con_inter, no), !.
+problema(sin_tinta):-
+    busca_pregunta(tinta, no), !.
+problema(mal_cable):-
+    busca_pregunta(cable, no), !.
+problema(componente_malo):-
+    busca_pregunta(liquido, si),
+    busca_pregunta(imp_con_elec, si),
+    busca_pregunta(enciende, no), !.
+problema(sucia):-
+    busca_pregunta(sonido, si),
+    busca_pregunta(polvo, no), !.
+problema(cambio_papel):-
+    busca_pregunta(sonido, si),
+    busca_pregunta(papel, no), !.
+problema(sucia):-
+    busca_pregunta(imp_borrosa, si),
+    busca_pregunta(polvo, no), !.
+problema(desalineado):-
+    busca_pregunta(imp_borrosa, si),
+    busca_pregunta(cabezales, si), !.
+problema(mensaje):-
+    busca_pregunta(errores, si),
+    busca_pregunta(pantalla_mensajes, si), !.
+problema(alarmas):-
+    busca_pregunta(errores, si),
+    busca_pregunta(alarmas_leds, si), !.
+problema(sin_resp).
 
 
 
