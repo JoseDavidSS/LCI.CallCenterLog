@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 
 :- consult('./SE.pl').
-=======
-:- consult('./se.pl').
->>>>>>> BDD
 
 
 /*
@@ -147,17 +143,18 @@ pregunta(Oracion):-
 sintagma_nominal(SN) :- sustantivo(Y,X,SN).
 sintagma_nominal(SN) :- articulo(Y,X,A),sustantivo(Y,X,N),append(A,N,SN).
 
+
 sintagma_verbal(SV) :-
     verbo(Y,V),
     adjetivo(Y,X,Z),
-    append(V,Z,SV),!.
+    append(V,Z,SV).
 
-
+/*
 sintagma_verbal(SV) :-
     verbo(Y,V),
     sintagma_nominal(SN),
     append(V,SN,SV).
-
+*/
 oracion(O) :-
     sintagma_nominal(SN),
     sintagma_verbal(SV),
@@ -189,7 +186,6 @@ semi_final_de_conversacion(O):-
     write('No entiendo de que mierdas esta hablando'),nl,fail.
 
 final_de_conversacion(O):-
-<<<<<<< HEAD
     despedidas(D),sustantivo(Y,X,N),
     append(D,N,O),
     write('Fue un placer ayudarlo'),nl,!.
@@ -203,11 +199,3 @@ miembro(X, [_|R]):-
     miembro(X, R).
 
 
-=======
-    despedidas(D),nombre(Y,X,N),
-    append(D,N,P),
-    write('De nada fue un placer ayudarlo'),nl,!.
-
-final_de_conversacion(O):-
-    write('No entiendo de que mierdas esta hablando'),nl,fail.
->>>>>>> BDD
