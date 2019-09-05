@@ -48,6 +48,21 @@ respuesta(desalineado, 'Debe reajustar los cabezales en configuraciones de impre
 respuesta(mensaje, 'Siga las instrucciones que aparecen en la pantalla de su impresora').
 respuesta(alarmas, 'Lea el manual de usuario sobre esta alarma o luz indicadora').
 
+% Hechos que contienen las referencias de un problema específico, están
+% constituidos por la palabra clave del problema y el link de la página
+% con la solución a este.
+referencia(imp_sin_elec, 'https://www.yoreparo.com/es/impresoras/preguntas/831836/mi-impresora-no-enciende').
+referencia(no_drivers, 'http://support.ricoh.com/bb_v1oi/pub_e/oi_view/0001032/0001032602/view/Op_Guide/unv/0063.htm').
+referencia(imp_sin_inter, 'https://techlandia.com/arreglar-impresora-conexion-offline-como_15198/').
+referencia(sin_tinta, 'https://files.support.epson.com/htmldocs/xp201_/xp201_ug6/source/printers/source/ink_functions/tasks/xp200/removing_installing_cartridges_xp200.html').
+referencia(mal_cable, 'https://www.steren.com.gt/computacion/cables-usb').
+referencia(componente_malo, 'https://www.mareex.com/soporte-y-servicio/servicios-de-mantenimiento-y-reparacion-de-impresoras').
+referencia(sucia, 'https://es.wikihow.com/limpiar-una-impresora').
+referencia(cambio_papel, 'https://imprentaonline-naturaprint.com/5-tipos-de-papel-imprimir').
+referencia(desalineado, 'https://ugp01.c-ij.com/ij/webmanual/PrinterDriver/W/MG3500%20series/1.0/ES/PPG/dg-c_alignment_auto.html').
+referencia(mensaje, 'http://support.ricoh.com/bb_v1oi/pub_e/oi_view/0001062/0001062644/view/intro/int/0068.htm').
+referencia(alarmas, 'https://www.oki.com/es/printing/support/user-manual/index.html').
+
 
 
 
