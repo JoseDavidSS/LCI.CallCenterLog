@@ -1,7 +1,67 @@
-:- consult('./DB.pl').
+% Hechos que mencionan algunas causas de problemas que puede tener la
+% impresora.
+causa('- Su impresora no está conectada.').
+causa('- No tiene los drivers instalados.').
+causa('- La impresora no está en la misma red que su computadora.').
+causa('- Su impresora no tiene tinta.').
+causa('- El cable de su impresora esta dañado').
+causa('- Su impresora puede estar sucia, por lo que se debe limpiar.').
+causa('- Los cabezales pueden estar desalineados.').
 
-:- dynamic(respuestas/1).
+% Hechos que contienen las preguntas que el sistema le realizará al
+% usuario, está constituido por la palabra clave del problema (solo lo
+% ve el programa) y la oración del problema que será imprimida para
+% mostrarsela al usuario.
+pregunta(imp_con_elec, '¿Revisó que la impresora se encuentre conectada?').
+pregunta(prim_vez, '¿Es la primera vez que utiliza la impresora?').
+pregunta(drivers, '¿Ya instaló los drivers de su impresora?').
+pregunta(wifi, '¿Su impresora es WiFi?').
+pregunta(imp_con_inter, '¿Su impresora está conectada a la misma red que su computadora?').
+pregunta(tinta, '¿Su impresora tiene suficiente tinta en todos sus cartuchos?').
+pregunta(cable, '¿Verificó que el cable de su impresora se encuentre en buenas condiciones?').
+pregunta(liquido, '¿Ha derramado algún líquido sobre la impresora?').
+pregunta(polvo, '¿Su impresora ha sido limpiada correctamente recientemente?').
+pregunta(sonido, '¿Su impresora suena mal cuando se mueve?').
+pregunta(enciende, '¿Su impresora enciende?').
+pregunta(papel, '¿El papel usado se encuentra en buenas condiciones?').
+pregunta(imp_borrosa, '¿Su impresión se ve borrosa?').
+pregunta(imp_vieja, '¿Impresora vieja?').
+pregunta(cabezales, '¿La impresión aparece desalineada?').
+pregunta(errores, '¿La impresora está encendida pero sigue sin funcionar?').
+pregunta(pantalla_mensajes, '¿La impresora posee pantalla?').
+pregunta(alarmas_leds, '¿La impresora presenta una alarma o leds que comunmente no están activados?').
 
+% Hechos que contienen las respuestas que el sistema le mostrará al
+% usuario en caso de encontrar un problema, está constituido por la
+% palabra clave de la solución (solo lo ve el programa) y la oración de
+% la solución que mostrará el programa.
+respuesta(imp_sin_elec, 'Proceda a conectar su impresora a un tomacorriente.').
+respuesta(no_drivers, 'Proceda a instalar los drivers de su impresora.').
+respuesta(imp_sin_inter, 'Proceda a conectar su impresora a la red.').
+respuesta(sin_tinta, 'Proceda a cambiar él/los cartuchos de tinta necesarios de su impresora.').
+respuesta(mal_cable, 'Proceda a cambiar el cable de su impresora.').
+respuesta(componente_malo, 'Debe llevar su impresora a ser reparada, posiblemente se dañó un componente.').
+respuesta(sucia, 'Debe limpiar su impresora.').
+respuesta(cambio_papel, 'Proceda a cambiar el tipo de papel utilizado.').
+respuesta(sin_resp, 'El sistema no es capaz de atender su duda. Contacte un experto.').
+respuesta(desalineado, 'Debe reajustar los cabezales en configuraciones de impresora.').
+respuesta(mensaje, 'Siga las instrucciones que aparecen en la pantalla de su impresora.').
+respuesta(alarmas, 'Lea el manual de usuario sobre esta alarma o luz indicadora.').
+
+referencia(imp_sin_elec, 'https://www.yoreparo.com/es/impresoras/preguntas/831836/mi-impresora-no-enciende').
+referencia(no_drivers, 'http://support.ricoh.com/bb_v1oi/pub_e/oi_view/0001032/0001032602/view/Op_Guide/unv/0063.htm').
+referencia(imp_sin_inter, 'https://techlandia.com/arreglar-impresora-conexion-offline-como_15198/').
+referencia(sin_tinta, 'https://files.support.epson.com/htmldocs/xp201_/xp201_ug6/source/printers/source/ink_functions/tasks/xp200/removing_installing_cartridges_xp200.html').
+referencia(mal_cable, 'https://www.steren.com.gt/computacion/cables-usb').
+referencia(componente_malo, 'https://www.mareex.com/soporte-y-servicio/servicios-de-mantenimiento-y-reparacion-de-impresoras').
+referencia(sucia, 'https://es.wikihow.com/limpiar-una-impresora').
+referencia(cambio_papel, 'https://imprentaonline-naturaprint.com/5-tipos-de-papel-imprimir').
+referencia(desalineado, 'https://ugp01.c-ij.com/ij/webmanual/PrinterDriver/W/MG3500%20series/1.0/ES/PPG/dg-c_alignment_auto.html').
+referencia(mensaje, 'http://support.ricoh.com/bb_v1oi/pub_e/oi_view/0001062/0001062644/view/intro/int/0068.htm').
+referencia(alarmas, 'https://www.oki.com/es/printing/support/user-manual/index.html').
+
+
+<<<<<<< HEAD
 % Regla que se encarga de imprimir todas las posibles causas de algï¿½n
 % problema.
 causas():-
@@ -15,11 +75,12 @@ causas():-
 % usuario.
 problema(imp_sin_elec):-
     busca_pregunta_no(imp_con_elec), !.
+=======
 
-problema(no_drivers):-
-    busca_pregunta_si(prim_vez),
-    busca_pregunta_no(drivers), !.
+>>>>>>> BDD
 
+
+<<<<<<< HEAD
 problema(imp_sin_inter):-
     busca_pregunta_si(wifi),
     busca_pregunta_no(imp_con_inter), !.
@@ -148,4 +209,6 @@ leer_input(L):-
     read_line_to_codes(user_input, Cs),
     atom_codes(S, Cs),
     atomic_list_concat(L, ' ', S).
+=======
+>>>>>>> BDD
 
