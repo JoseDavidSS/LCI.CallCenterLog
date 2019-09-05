@@ -1,46 +1,82 @@
+
+/*
+'########:::::'###:::::'######::'########:
+ ##.... ##:::'## ##:::'##... ##: ##.....::
+ ##:::: ##::'##:. ##:: ##:::..:: ##:::::::
+ ########::'##:::. ##:. ######:: ######:::
+ ##.... ##: #########::..... ##: ##...::::
+ ##:::: ##: ##.... ##:'##::: ##: ##:::::::
+ ########:: ##:::: ##:. ######:: ########:
+........:::..:::::..:::......:::........::
+
+'########::'########:
+ ##.... ##: ##.....::
+ ##:::: ##: ##:::::::
+ ##:::: ##: ######:::
+ ##:::: ##: ##...::::
+ ##:::: ##: ##:::::::
+ ########:: ########:
+........:::........::
+
+'########:::::'###::::'########::'#######:::'######::
+ ##.... ##:::'## ##:::... ##..::'##.... ##:'##... ##:
+ ##:::: ##::'##:. ##::::: ##:::: ##:::: ##: ##:::..::
+ ##:::: ##:'##:::. ##:::: ##:::: ##:::: ##:. ######::
+ ##:::: ##: #########:::: ##:::: ##:::: ##::..... ##:
+ ##:::: ##: ##.... ##:::: ##:::: ##:::: ##:'##::: ##:
+ ########:: ##:::: ##:::: ##::::. #######::. ######::
+........:::..:::::..:::::..::::::.......::::......:::
+
+
+
+
+*/
+
+
+
 % Hechos que mencionan algunas causas de problemas que puede tener la
-% impresora.
-causa('- Su impresora no está conectada.').
+
+causa('- Su impresora no estï¿½ conectada.').
 causa('- No tiene los drivers instalados.').
-causa('- La impresora no está en la misma red que su computadora.').
+causa('- La impresora no estï¿½ en la misma red que su computadora.').
 causa('- Su impresora no tiene tinta.').
-causa('- El cable de su impresora esta dañado').
+causa('- El cable de su impresora esta daï¿½ado').
 causa('- Su impresora puede estar sucia, por lo que se debe limpiar.').
 causa('- Los cabezales pueden estar desalineados.').
 
-% Hechos que contienen las preguntas que el sistema le realizará al
-% usuario, está constituido por la palabra clave del problema (solo lo
-% ve el programa) y la oración del problema que será imprimida para
+% Hechos que contienen las preguntas que el sistema le realizarï¿½ al
+% usuario, estï¿½ constituido por la palabra clave del problema (solo lo
+% ve el programa) y la oraciï¿½n del problema que serï¿½ imprimida para
 % mostrarsela al usuario.
-pregunta(imp_con_elec, '¿Revisó que la impresora se encuentre conectada?').
-pregunta(prim_vez, '¿Es la primera vez que utiliza la impresora?').
-pregunta(drivers, '¿Ya instaló los drivers de su impresora?').
-pregunta(wifi, '¿Su impresora es WiFi?').
-pregunta(imp_con_inter, '¿Su impresora está conectada a la misma red que su computadora?').
-pregunta(tinta, '¿Su impresora tiene suficiente tinta en todos sus cartuchos?').
-pregunta(cable, '¿Verificó que el cable de su impresora se encuentre en buenas condiciones?').
-pregunta(liquido, '¿Ha derramado algún líquido sobre la impresora?').
-pregunta(polvo, '¿Su impresora ha sido limpiada correctamente recientemente?').
-pregunta(sonido, '¿Su impresora suena mal cuando se mueve?').
-pregunta(enciende, '¿Su impresora enciende?').
-pregunta(papel, '¿El papel usado se encuentra en buenas condiciones?').
-pregunta(imp_borrosa, '¿Su impresión se ve borrosa?').
-pregunta(imp_vieja, '¿Impresora vieja?').
-pregunta(cabezales, '¿La impresión aparece desalineada?').
-pregunta(errores, '¿La impresora está encendida pero sigue sin funcionar?').
-pregunta(pantalla_mensajes, '¿La impresora posee pantalla?').
-pregunta(alarmas_leds, '¿La impresora presenta una alarma o leds que comunmente no están activados?').
+pregunta(imp_con_elec, 'ï¿½Revisï¿½ que la impresora se encuentre conectada?').
+pregunta(prim_vez, 'ï¿½Es la primera vez que utiliza la impresora?').
+pregunta(drivers, 'ï¿½Ya instalï¿½ los drivers de su impresora?').
+pregunta(wifi, 'ï¿½Su impresora es WiFi?').
+pregunta(imp_con_inter, 'ï¿½Su impresora estï¿½ conectada a la misma red que su computadora?').
+pregunta(tinta, 'ï¿½Su impresora tiene suficiente tinta en todos sus cartuchos?').
+pregunta(cable, 'ï¿½Verificï¿½ que el cable de su impresora se encuentre en buenas condiciones?').
+pregunta(liquido, 'ï¿½Ha derramado algï¿½n lï¿½quido sobre la impresora?').
+pregunta(polvo, 'ï¿½Su impresora ha sido limpiada correctamente recientemente?').
+pregunta(sonido, 'ï¿½Su impresora suena mal cuando se mueve?').
+pregunta(enciende, 'ï¿½Su impresora enciende?').
+pregunta(papel, 'ï¿½El papel usado se encuentra en buenas condiciones?').
+pregunta(imp_borrosa, 'ï¿½Su impresiï¿½n se ve borrosa?').
+pregunta(imp_vieja, 'ï¿½Impresora vieja?').
+pregunta(cabezales, 'ï¿½La impresiï¿½n aparece desalineada?').
+pregunta(errores, 'ï¿½La impresora estï¿½ encendida pero sigue sin funcionar?').
+pregunta(pantalla_mensajes, 'ï¿½La impresora posee pantalla?').
+pregunta(alarmas_leds, 'ï¿½La impresora presenta una alarma o leds que comunmente no estï¿½n activados?').
 
-% Hechos que contienen las respuestas que el sistema le mostrará al
-% usuario en caso de encontrar un problema, está constituido por la
-% palabra clave de la solución (solo lo ve el programa) y la oración de
-% la solución que mostrará el programa.
+% Hechos que contienen las respuestas que el sistema le mostrarï¿½ al
+% usuario en caso de encontrar un problema, estï¿½ constituido por la
+% palabra clave de la soluciï¿½n (solo lo ve el programa) y la oraciï¿½n de
+% la soluciï¿½n que mostrarï¿½ el programa.
 respuesta(imp_sin_elec, 'Proceda a conectar su impresora a un tomacorriente.').
 respuesta(no_drivers, 'Proceda a instalar los drivers de su impresora.').
 respuesta(imp_sin_inter, 'Proceda a conectar su impresora a la red.').
-respuesta(sin_tinta, 'Proceda a cambiar él/los cartuchos de tinta necesarios de su impresora.').
+respuesta(sin_tinta, 'Proceda a cambiar ï¿½l/los cartuchos de tinta necesarios de su impresora.').
 respuesta(mal_cable, 'Proceda a cambiar el cable de su impresora.').
-respuesta(componente_malo, 'Debe llevar su impresora a ser reparada, posiblemente se dañó un componente.').
+respuesta(componente_malo, 'Debe llevar su impresora a ser reparada, posiblemente se daï¿½ï¿½ un componente.').
 respuesta(sucia, 'Debe limpiar su impresora.').
 respuesta(cambio_papel, 'Proceda a cambiar el tipo de papel utilizado.').
 respuesta(sin_resp, 'El sistema no es capaz de atender su duda. Contacte un experto.').
@@ -60,8 +96,32 @@ referencia(desalineado, 'https://ugp01.c-ij.com/ij/webmanual/PrinterDriver/W/MG3
 referencia(mensaje, 'http://support.ricoh.com/bb_v1oi/pub_e/oi_view/0001062/0001062644/view/intro/int/0068.htm').
 referencia(alarmas, 'https://www.oki.com/es/printing/support/user-manual/index.html').
 
+/*
 
-<<<<<<< HEAD
+
+:'######::'####::'######::'########:'########:'##::::'##::::'###::::
+'##... ##:. ##::'##... ##:... ##..:: ##.....:: ###::'###:::'## ##:::
+ ##:::..::: ##:: ##:::..::::: ##:::: ##::::::: ####'####::'##:. ##::
+. ######::: ##::. ######::::: ##:::: ######::: ## ### ##:'##:::. ##:
+:..... ##:: ##:::..... ##:::: ##:::: ##...:::: ##. #: ##: #########:
+'##::: ##:: ##::'##::: ##:::: ##:::: ##::::::: ##:.:: ##: ##.... ##:
+. ######::'####:. ######::::: ##:::: ########: ##:::: ##: ##:::: ##:
+:......:::....:::......::::::..:::::........::..:::::..::..:::::..::
+
+
+'########:'##::::'##:'########::'########:'########::'########::'#######::
+ ##.....::. ##::'##:: ##.... ##: ##.....:: ##.... ##:... ##..::'##.... ##:
+ ##::::::::. ##'##::: ##:::: ##: ##::::::: ##:::: ##:::: ##:::: ##:::: ##:
+ ######:::::. ###:::: ########:: ######::: ########::::: ##:::: ##:::: ##:
+ ##...:::::: ## ##::: ##.....::: ##...:::: ##.. ##:::::: ##:::: ##:::: ##:
+ ##:::::::: ##:. ##:: ##:::::::: ##::::::: ##::. ##::::: ##:::: ##:::: ##:
+ ########: ##:::. ##: ##:::::::: ########: ##:::. ##:::: ##::::. #######::
+........::..:::::..::..:::::::::........::..:::::..:::::..::::::.......:::
+
+
+
+*/
+
 % Regla que se encarga de imprimir todas las posibles causas de algï¿½n
 % problema.
 causas():-
@@ -75,12 +135,8 @@ causas():-
 % usuario.
 problema(imp_sin_elec):-
     busca_pregunta_no(imp_con_elec), !.
-=======
-
->>>>>>> BDD
 
 
-<<<<<<< HEAD
 problema(imp_sin_inter):-
     busca_pregunta_si(wifi),
     busca_pregunta_no(imp_con_inter), !.
@@ -209,6 +265,4 @@ leer_input(L):-
     read_line_to_codes(user_input, Cs),
     atom_codes(S, Cs),
     atomic_list_concat(L, ' ', S).
-=======
->>>>>>> BDD
 
