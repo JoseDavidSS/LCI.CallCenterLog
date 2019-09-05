@@ -25,7 +25,7 @@ verbo(singular,[esta]).
 verbo(singular,[comen]).
 saludo([hola]).
 saludo([buenas]).
-
+ null(['']).
 
 sinonimo(mala,[mierda,jodido,mala]).
 sinonimo(causas,[razones,causas,problemas,inconvenientes]).
@@ -54,16 +54,27 @@ inicio_de_conversacion(P):-
 mitad_de_conversacion(O):-
     oracion(O), sinonimo(mala,X), miembro(Y,X), miembro(Y,O),solucionador(),!.
 
-mitad_de_conversacion(O):-
-    oracion(O), razones(X), miembro(X,O), causas().
+semi_final_de_conversacion(O):-
+    null(O), !, write('Algo mas que pueda ayudarle?'), nl,fail.
+
+semi_final_de_conversacion(O):-
+    miembro(si,O),!,
+    callcenterlog_aux.
+
+semi_final_de_conversacion(O):-
+    miembro(no, O),!.    
+    
+semi_final_de_conversacion(O):-
+    write('No entiendo de que mierdas esta hablando'),nl,fail.
 
 final_de_conversacion(O):-
     despedidas(D),nombre(Y,X,N),
-    append(D,N,P),
-    write('De nada fue un placer ayudarlo'),nl,!.
+    append(D,N,O),
+    write('Fue un placer ayudarlo'),nl,!.
     
+
 final_de_conversacion(O):-
-    write('No entiendo de que mierdas esta hablando'),nl,fail.
+    write('Escriba bien'), nl, fail.
 
 miembro(X, [X|_]).
 miembro(X, [_|R]):-
