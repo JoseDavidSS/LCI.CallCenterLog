@@ -1,5 +1,5 @@
-:- consult('./se.pl').
-:- consult('./bnf.pl').
+:- consult('./SE.pl').
+:- consult('./BNF.pl').
 callcenterlog:-
     repeat,
     leer_input(Saludo),inicio_de_conversacion(Saludo), !, callcenterlog_aux.

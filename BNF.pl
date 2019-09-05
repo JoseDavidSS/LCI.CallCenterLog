@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 
 :- consult('./SE.pl').
 
+=======
+:- consult('./se.pl').
+>>>>>>> BDD
 
 /*
 
@@ -88,7 +92,7 @@ adverbio([de]).
 %Estas son los adverbios  que posee la base de datos
 
 
- null(['']).
+null(['']).
 
 /*
 '########::'##::: ##:'########:
@@ -133,21 +137,28 @@ sintagma_predicado2(Oracion):-
 sintagma_predicado_inicial(SPI):-
     pregunta(Pregunta),
     conjucion(C).
-    %
-    
+
 pregunta(Oracion):-
     sintagma_interrogativo(SI),
     sintagma_nominal(SN),
     append(SI,SN,Oracion).
-     
+
 sintagma_nominal(SN) :- sustantivo(Y,X,SN).
 sintagma_nominal(SN) :- articulo(Y,X,A),sustantivo(Y,X,N),append(A,N,SN).
+<<<<<<< HEAD
 
 
+=======
+/*
+>>>>>>> BDD
 sintagma_verbal(SV) :-
     verbo(Y,V),
     adjetivo(Y,X,Z),
     append(V,Z,SV).
+<<<<<<< HEAD
+=======
+*/
+>>>>>>> BDD
 
 /*
 sintagma_verbal(SV) :-
@@ -180,8 +191,8 @@ semi_final_de_conversacion(O):-
     callcenterlog_aux.
 
 semi_final_de_conversacion(O):-
-    miembro(no, O),!.    
-    
+    miembro(no, O),!.
+
 semi_final_de_conversacion(O):-
     write('No entiendo de que mierdas esta hablando'),nl,fail.
 
@@ -189,13 +200,15 @@ final_de_conversacion(O):-
     despedidas(D),sustantivo(Y,X,N),
     append(D,N,O),
     write('Fue un placer ayudarlo'),nl,!.
-    
 
 final_de_conversacion(O):-
     write('Escriba bien'), nl, fail.
+<<<<<<< HEAD
 
 miembro(X, [X|_]).
 miembro(X, [_|R]):-
     miembro(X, R).
 
 
+=======
+>>>>>>> BDD
