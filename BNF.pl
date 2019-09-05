@@ -139,12 +139,12 @@ pregunta(Oracion):-
 
 sintagma_nominal(SN) :- sustantivo(Y,X,SN).
 sintagma_nominal(SN) :- articulo(Y,X,A),sustantivo(Y,X,N),append(A,N,SN).
-
+/*
 sintagma_verbal(SV) :-
     verbo(Y,V),
     adjetivo(Y,X,Z),
-    append(V,Z,SV),!.
-
+    append(V,Z,SV).
+*/
 
 sintagma_verbal(SV) :-
     verbo(Y,V),
