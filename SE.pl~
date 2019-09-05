@@ -2,7 +2,7 @@
 
 :- dynamic(respuestas/1).
 
-% Regla que se encarga de imprimir todas las posibles causas de algún
+% Regla que se encarga de imprimir todas las posibles causas de algï¿½n
 % problema.
 causas():-
     write('Hay varias causas que pueden ocasionar que su impresora no funcione:'), nl,
@@ -11,7 +11,7 @@ causas():-
     fail.
 
 % Reglas de los problemas que puede tener la impresora, se encargan de
-% retornar la solución del problema con base a las respuestas del
+% retornar la soluciï¿½n del problema con base a las respuestas del
 % usuario.
 problema(imp_sin_elec):-
     busca_pregunta_no(imp_con_elec), !.
@@ -62,7 +62,7 @@ problema(alarmas):-
 problema(sin_resp).
 
 % Regla que se encarga de revisar si una pregunta ha sido respondida
-% previamente por el usuario, para evitar preguntarla nuevamente, además
+% previamente por el usuario, para evitar preguntarla nuevamente, ademï¿½s
 % en caso de que la pregunta ya fuese respondida, se revisa si la
 % respuesta del usuario fue un no.
 busca_pregunta_no(PC):-
@@ -70,14 +70,14 @@ busca_pregunta_no(PC):-
     buscar_respondido(PC, R, L), !,
     consultar_aux(no, R).
 
-% Regla que se encarga de buscar la pregunta que se le realizará al
+% Regla que se encarga de buscar la pregunta que se le realizarï¿½ al
 % usuario, y se espera que responda no.
 busca_pregunta_no(PC):-
     pregunta(PC, P),
     consultar_no(PC, P).
 
 % Regla que se encarga de revisar si una pregunta ha sido respondida
-% previamente por el usuario, para evitar preguntarla nuevamente, además
+% previamente por el usuario, para evitar preguntarla nuevamente, ademï¿½s
 % en caso de que la pregunta ya fuese respondida, se revisa si la
 % respuesta del usuario fue un si.
 busca_pregunta_si(PC):-
@@ -85,7 +85,7 @@ busca_pregunta_si(PC):-
     buscar_respondido(PC, R, L), !,
     consultar_aux(si, R).
 
-% Regla que se encarga de buscar la pregunta que se le realizará al
+% Regla que se encarga de buscar la pregunta que se le realizarï¿½ al
 % usuario, y se espera que responda si.
 busca_pregunta_si(PC):-
     pregunta(PC, P),
@@ -117,9 +117,9 @@ consultar_si(PC, P):-
 % esperada por el sistema experto.
 consultar_aux(R, R).
 
-% Regla que se encarga de iniciar el proceso de búsqueda de una solución
+% Regla que se encarga de iniciar el proceso de bï¿½squeda de una soluciï¿½n
 % a un problema del usuario, se encarga de reiniciar la lista de
-% respuestas y además retorna e imprime la solución al problema del
+% respuestas y ademï¿½s retorna e imprime la soluciï¿½n al problema del
 % usuario.
 solucionador():-
     write('Responda solamente con un si. o no. a las siguientes preguntas:'), nl,
@@ -140,11 +140,18 @@ buscar_respondido(P, R, [P, R|_]).
 buscar_respondido(P, R, [_|C]):-
     buscar_respondido(P, R, C).
 
-
+% Regla que se encarga de leer un entrada del usuario y la retorna como
+% una lista, donde cada elemento es una palabra de la oraciï¿½n del
+% usuario.
 leer_input(L):-
     read_line_to_codes(user_input, Cs),
     atom_codes(S, Cs),
     atomic_list_concat(L, ' ', S).
 
+leer_linea():-
+    read(R), nl,
+    %with_output_to(atom(A), write(R)),
+    split_string(R, " ", "",L),
+    write(L).
 
 
