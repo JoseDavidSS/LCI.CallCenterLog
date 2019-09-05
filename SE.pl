@@ -140,7 +140,13 @@ buscar_respondido(P, R, [P, R|_]).
 buscar_respondido(P, R, [_|C]):-
     buscar_respondido(P, R, C).
 
-
+% Regla que se encarga de leer un entrada del usuario y la retorna como
+% una lista, donde cada elemento es una palabra de la oración del
+% usuario.
+leer_input(L):-
+    read_line_to_codes(user_input, Cs),
+    atom_codes(S, Cs),
+    atomic_list_concat(L, ' ', S).
 
 
 
