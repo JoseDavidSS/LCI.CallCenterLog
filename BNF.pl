@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-
 :- consult('./SE.pl').
-
-=======
-:- consult('./se.pl').
->>>>>>> BDD
-
 /*
 
 '########:::::'###:::::'######::'########:
@@ -83,7 +76,7 @@ verbo(singular,[esta]).
 verbo(singular,[es]).
 verbo(singular,[comen]).
 %Estos son los adjetivo que posee la base de datos
-adjetivo(singular,masculino,[no_drivers]).
+adjetivo(singular,masculino,[drivers]).
 adjetivo(singular,masculino,[malo]).
 adjetivo(singular,femenino,[mala]).
 adjetivo(plural,masculino,[malos]).
@@ -114,8 +107,8 @@ null(['']).
 */
 sinonimo(mala,[mierda,jodido,mala]).
 sinonimo(causas,[razones,causas]).
-sinonimo(referencia,[referencias]).
-sinonimo(problematica,[problema,equivoco,incierto]).
+sinonimo(referencia,[referencia]).
+sinonimo(problematica,[problema,equivoco,incierto, problematica]).
 
 
 /*
@@ -213,7 +206,7 @@ mitad_de_conversacion(O):-
 mitad_de_conversacion(O):-
     sintagma_preguntaCompleja(O), sinonimo(causas,X), miembro(Y,X), miembro(Y,O),!,not(causas()).
 mitad_de_conversacion(O):-
-    sintagma_preguntaCompleja(O), sinonimo(referencia,X), miembro(Y,X), miembro(Y,O),sinonimo(problematica,Z), miembro(W,Z), miembro(Z,O),!,referencia(Z,L),write(L).
+    sintagma_preguntaCompleja(O), sinonimo(referencia,X), miembro(Y,X), miembro(Y,O),sinonimo(problematica,Z), miembro(W,Z), miembro(W,O),!,referencia(Z,L),write(L).
 mitad_de_conversacion(O):-
     write('Nose que me dijiste'),nl,fail.
 
@@ -221,11 +214,9 @@ semi_final_de_conversacion(O):-
     miembro(si,O),!,
     write('Claro, cual es el problema?'),nl,
     callcenterlog_aux.
-
 semi_final_de_conversacion(O):-
     miembro(no, O),!,
     write('De acuerdo'),nl.
-
 semi_final_de_conversacion(O):-
     write('No entiendo de que esta hablando'),nl,fail.
 
@@ -233,6 +224,17 @@ final_de_conversacion(O):-
     despedidas(D),sustantivo(Y,X,N),
     append(D,N,O),
     write('Fue un placer ayudarlo'),nl,!.
-
 final_de_conversacion(O):-
     write('Escriba bien'), nl, fail.
+
+
+
+
+
+
+
+
+
+
+
+

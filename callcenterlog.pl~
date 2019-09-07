@@ -1,3 +1,4 @@
+
 :- consult('./SE.pl').
 :- consult('./BNF.pl').
 callcenterlog:-
@@ -7,6 +8,7 @@ callcenterlog_aux:-
     repeat,
     leer_input(Conversacion),mitad_de_conversacion(Conversacion),!, callcenterlog_aux2.
 callcenterlog_aux2:-
+    write('Algo mas que le pueda ayudar?'),nl,
     repeat,
     leer_input(Otra),semi_final_de_conversacion(Otra),!, callcenterlog_aux3.
 callcenterlog_aux3:-

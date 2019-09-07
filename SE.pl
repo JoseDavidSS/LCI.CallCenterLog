@@ -1,3 +1,6 @@
+:- consult('./DB.pl').
+:- consult('./readin.pl').
+
 /*
 :'######::'####::'######::'########:'########:'##::::'##::::'###::::
 '##... ##:. ##::'##... ##:... ##..:: ##.....:: ###::'###:::'## ##:::
@@ -18,9 +21,6 @@
  ########: ##:::. ##: ##:::::::: ########: ##:::. ##:::: ##::::. #######::
 ........::..:::::..::..:::::::::........::..:::::..:::::..::::::.......:::
 */
-
-:- consult('./DB.pl').
-:- consult('./readin.pl').
 
 :- dynamic(respuestas/1).
 
@@ -86,9 +86,11 @@ buscar_respondido(Pregunta, Respuesta, [Pregunta, Respuesta|_]).
 buscar_respondido(Pregunta, Respuesta, [_|Cola]):-
     buscar_respondido(Pregunta, Respuesta, Cola).
 
-miembro(X, [X|_]).
-miembro(X, [_|R]):-
-    miembro(X, R).
+% Hecho y regla que se encargan de buscar e indicar si hay un elemento
+% en una lista.
+miembro(Elemento, [Elemento|_]).
+miembro(Elemento, [_|Cola]):-
+    miembro(Elemento, Cola).
 
 % Regla que se encarga de leer un entrada del usuario y la retorna como
 % una lista, donde cada elemento es una palabra de la oraci�n del
