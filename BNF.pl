@@ -42,6 +42,8 @@ pronombre_interrogativo([donde]).
 pronombre_interrogativo([por-que]).
 pronombre_interrogativo([que]).
 pronombre_interrogativo([cuales]).
+pronombre_interrogativo([cual]).
+
 %Estos son los Articulos que posee la base de datos
 articulo(singular,masculino,[el]).
 articulo(plural,masculino,[los]).
@@ -59,13 +61,17 @@ despedidas([hasta,luego]).
 despedidas([adios]).
 despedidas([gracias]).
 %Estas son los sustantivos que posee la base de datos
+
 sustantivo(singular,masculino,[callcenterlog]).
 sustantivo(plural,femenino,[causas]).
 sustantivo(singular,masculino,[gato]).
 sustantivo(singular,femenino,[gata]).
+
 sustantivo(plural,masculino,[gatos]).
 sustantivo(plural,femenino,[gatas]).
 sustantivo(singular,masculino,[pescado]).
+sustantivo(singular,masculino,[problematica]).
+sustantivo(singular,femenino,[referencia]).
 %sustantivo(singular,femenino,[mala]).
 sustantivo(singular,femenino,[mierda]).
 sustantivo(singular,femenino,[impresora]).
@@ -77,6 +83,7 @@ verbo(singular,[esta]).
 verbo(singular,[es]).
 verbo(singular,[comen]).
 %Estos son los adjetivo que posee la base de datos
+adjetivo(singular,masculino,[no_drivers]).
 adjetivo(singular,masculino,[malo]).
 adjetivo(singular,femenino,[mala]).
 adjetivo(plural,masculino,[malos]).
@@ -106,7 +113,11 @@ null(['']).
 ........:::..::::..::..::::::::
 */
 sinonimo(mala,[mierda,jodido,mala]).
-sinonimo(causas,[razones,causas,problemas,inconvenientes]).
+sinonimo(causas,[razones,causas]).
+sinonimo(referencia,[referencias]).
+sinonimo(problematica,[problema,equivoco,incierto]).
+
+
 /*
 pregunta(Oracion):-
     pronombre_interrogativo(P),
@@ -198,20 +209,25 @@ inicio_de_conversacion(P):-
     write('No se de que esta hablando loco'),nl,fail.
 
 mitad_de_conversacion(O):-
-    oracion(O), sinonimo(mala,X), miembro(Y,X), miembro(Y,O),solucionador(),!.
-
-semi_final_de_conversacion(O):-
-    null(O), !, write('Algo mas que pueda ayudarle?'), nl,fail.
+    oracion(O), sinonimo(mala,X), miembro(Y,X), miembro(Y,O),!,solucionador().
+mitad_de_conversacion(O):-
+    sintagma_preguntaCompleja(O), sinonimo(causas,X), miembro(Y,X), miembro(Y,O),!,not(causas()).
+mitad_de_conversacion(O):-
+    sintagma_preguntaCompleja(O), sinonimo(referencia,X), miembro(Y,X), miembro(Y,O),sinonimo(problematica,Z), miembro(W,Z), miembro(Z,O),!,referencia(Z,L),write(L).
+mitad_de_conversacion(O):-
+    write('Nose que me dijiste'),nl,fail.
 
 semi_final_de_conversacion(O):-
     miembro(si,O),!,
+    write('Claro, cual es el problema?'),nl,
     callcenterlog_aux.
 
 semi_final_de_conversacion(O):-
-    miembro(no, O),!.
+    miembro(no, O),!,
+    write('De acuerdo'),nl.
 
 semi_final_de_conversacion(O):-
-    write('No entiendo de que mierdas esta hablando'),nl,fail.
+    write('No entiendo de que esta hablando'),nl,fail.
 
 final_de_conversacion(O):-
     despedidas(D),sustantivo(Y,X,N),

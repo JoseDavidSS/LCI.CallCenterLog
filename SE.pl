@@ -93,18 +93,6 @@ miembro(X, [_|R]):-
 % Regla que se encarga de leer un entrada del usuario y la retorna como
 % una lista, donde cada elemento es una palabra de la oraci�n del
 % usuario.
-leer_input(ListaNueva):-
-    read_in(Lista),
-    signos_de_puntuacion(ListaDeSignos),
-    eliminar_signo_de_lista(Lista, ListaDeSignos, ListaNueva).
-
-eliminar_signo_de_lista([], _, _).
-eliminar_signo_de_lista([Elemento|Lista], [], [Elemento|ListaNueva]):-
-    signos_de_puntuacion(ListaDeSignos),
-    eliminar_signo_de_lista(Lista, ListaDeSignos, ListaNueva).
-eliminar_signo_de_lista([Signo|Lista], [Signo|_], ListaNueva):-
-    signos_de_puntuacion(ListaDeSignos),
-    eliminar_signo_de_lista(Lista, ListaDeSignos, ListaNueva).
-eliminar_signo_de_lista(Lista, [_|ListaDeSignos], ListaNueva):-
-    eliminar_signo_de_lista(Lista, ListaDeSignos, ListaNueva).
+leer_input(Lista):-
+    read_in(Lista).
 

@@ -135,9 +135,6 @@ problema(alarmas):-
     busca_pregunta(alarmas_leds, si), !.
 problema(sin_resp).
 
-% Hecho con una lista con todos los posibles signos de puntuacion.
-signos_de_puntuacion(['.', ',', '?', ':', ';']).
-
 
 
 

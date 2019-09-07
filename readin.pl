@@ -49,6 +49,9 @@ digits([K|U]) --> [K],{digit(K)},!,digits(U).
 digits([]) --> [].
 
 blanks--> [K],{K=<32},!,blanks.
+blanks--> [K],{K=<46},!,blanks.
+blanks--> [K],{K=<44},!,blanks.
+blanks--> [K],{K=<63},!,blanks.
 blanks --> [].
 
 digit(K):-K>47,K<58.
