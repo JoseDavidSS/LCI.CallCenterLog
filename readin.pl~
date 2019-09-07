@@ -1,23 +1,23 @@
 /* @(#)readin.pl	24.1 2/23/88 */
 
-/*
+/* 
 	Copyright 1986, Fernando C.N. Pereira and David H.D. Warren,
 
 			   All Rights Reserved
 */
 /* Read a sentence */
 
-:- mode(initread(-)).
-:- mode(readrest(+,-)).
-:- mode(word(-,?,?)).
-:- mode(words(-,?,?)).
-:- mode(alphanum(+,-)).
-:- mode(alphanums(-,?,?)).
-:- mode(digits(-,?,?)).
-:- mode(digit(+)).
-:- mode(lc(+,-)).
+ :- mode initread(-).
+ :- mode readrest(+,-).
+ :- mode word(-,?,?).
+ :- mode words(-,?,?).
+ :- mode alphanum(+,-).
+ :- mode alphanums(-,?,?).
+ :- mode digits(-,?,?).
+ :- mode digit(+).
+ :- mode lc(+,-).
 
-:- public read_in/1.
+ :- public read_in/1.
 
 /* Read sentence */
 
@@ -29,7 +29,7 @@ readrest(46,[]):-!.
 readrest(63,[]):-!.
 readrest(33,[]):-!.
 readrest(K,[K1|U]):-K=<32,!,get(K1),readrest(K1,U).
-readrest(_,[K2|U]):-get0(K2),readrest(K2,U).
+readrest(K1,[K2|U]):-get0(K2),readrest(K2,U).
 
 words([V|U]) --> word(V),!,blanks,words(U).
 words([]) --> [].

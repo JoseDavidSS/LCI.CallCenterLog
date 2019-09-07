@@ -40,7 +40,7 @@ causa('- El cable de su impresora esta malo').
 causa('- Su impresora puede estar sucia, por lo que se debe limpiar.').
 causa('- Los cabezales pueden estar desalineados.').
 
-% Hechos que contienen las preguntas que el sistema le realizar� al
+% Hechos que contienen las preguntas que el sistema le realizara al
 % usuario, esta constituido por la palabra clave del problema (solo lo
 % ve el programa) y la oracion del problema que seria imprimido para
 % mostrarselo al usuario.
@@ -63,10 +63,10 @@ pregunta(errores, 'La impresora esta encendida pero sigue sin funcionar?').
 pregunta(pantalla_mensajes, 'La impresora posee pantalla?').
 pregunta(alarmas_leds, 'La impresora presenta una alarma o leds que comunmente no estan activados?').
 
-% Hechos que contienen las respuestas que el sistema le mostrar� al
-% usuario en caso de encontrar un problema, est� constituido por la
-% palabra clave de la soluci�n (solo lo ve el programa) y la oraci�n de
-% la soluci�n que mostrar� el programa.
+% Hechos que contienen las respuestas que el sistema le mostraran al
+% usuario en caso de encontrar un problema, esta constituido por la
+% palabra clave de la solucion (solo lo ve el programa) y la oracion
+% de la solucion que mostrara el programa.
 respuesta(imp_sin_elec, 'Proceda a conectar su impresora a un tomacorriente.').
 respuesta(no_drivers, 'Proceda a instalar los drivers de su impresora').
 respuesta(imp_sin_inter, 'Proceda a conectar su impresora a la red.').
@@ -83,9 +83,9 @@ respuesta(alarmas, 'Lea el manual de usuario sobre esta alarma o luz indicadora'
 % Hechos que contienen las referencias de un problema especifico,
 % estan constituidos por la palabra clave del problema y el link de la
 % pagina con la solucion a este.
-referencia(elec, 'https://www.yoreparo.com/es/impresoras/preguntas/831836/mi-impresora-no-enciende').
+referencia(electricidad, 'https://www.yoreparo.com/es/impresoras/preguntas/831836/mi-impresora-no-enciende').
 referencia(drivers, 'http://support.ricoh.com/bb_v1oi/pub_e/oi_view/0001032/0001032602/view/Op_Guide/unv/0063.htm').
-referencia(inter, 'https://techlandia.com/arreglar-impresora-conexion-offline-como_15198/').
+referencia(internet, 'https://techlandia.com/arreglar-impresora-conexion-offline-como_15198/').
 referencia(tinta, 'https://files.support.epson.com/htmldocs/xp201_/xp201_ug6/source/printers/source/ink_functions/tasks/xp200/removing_installing_cartridges_xp200.html').
 referencia(cable, 'https://www.steren.com.gt/computacion/cables-usb').
 referencia(componente, 'https://www.mareex.com/soporte-y-servicio/servicios-de-mantenimiento-y-reparacion-de-impresoras').

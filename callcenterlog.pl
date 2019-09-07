@@ -13,4 +13,4 @@ callcenterlog_aux2:-
     leer_input(Otra),semi_final_de_conversacion(Otra),!, callcenterlog_aux3.
 callcenterlog_aux3:-
     repeat,
-    leer_input(Adios), final_de_conversacion(Adios), !.
+    leer_input(Adios), final_de_conversacion(Adios), !, abort.
