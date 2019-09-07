@@ -206,7 +206,7 @@ mitad_de_conversacion(O):-
 mitad_de_conversacion(O):-
     sintagma_preguntaCompleja(O), sinonimo(causas,X), miembro(Y,X), miembro(Y,O),!,not(causas()).
 mitad_de_conversacion(O):-
-    sintagma_preguntaCompleja(O), sinonimo(referencia,X), miembro(Y,X), miembro(Y,O),sinonimo(problematica,Z), miembro(W,Z), miembro(W,O),!,referencia(Z,L),write(L).
+    sintagma_preguntaCompleja(O), sinonimo(referencia,X), miembro(Y,X), miembro(Y,O),sinonimo(problematica,Z), miembro(W,Z), miembro(W,O),adjetivo(A),miembro(A,O),!,referencia(A,L),write(L).
 mitad_de_conversacion(O):-
     write('Nose que me dijiste'),nl,fail.
 
