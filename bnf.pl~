@@ -58,9 +58,12 @@ despedidas([gracias]).
 %Estas son los sustantivos que posee la base de datos
 sustantivo(singular,masculino,[callcenterlog]).
 sustantivo(plural,femenino,[causas]).
+sustantivo(plural,femenino,[razones]).
 sustantivo(singular,masculino,[problematica]).
 sustantivo(singular,femenino,[referencia]).
 sustantivo(singular,femenino,[impresora]).
+sustantivo(singular,masculino,[problema]).
+sustantivo(singular,masculino,[error]).
 
 %Estas son los verbos que posee la base de datos
 verbo(singular,[come]).
@@ -90,6 +93,7 @@ adjetivo(singular,femenino,[rota]).
 adjetivo(singular,masculino,[roto]).
 adjetivo(singular,femenino,[corrupta]).
 adjetivo(singular,femenino,[corrupto]).
+adjetivo(singular,femenino,[jodida]).
 
 %Estas son las conjuciones  que posee la base de datos
 conjucion([que]).
@@ -109,10 +113,10 @@ adverbio([de]).
 */
 
 %
-sinonimo(mala,[mierda,jodido,mala]).
+sinonimo(mala,[jodida,mala,rota,corrupta]).
 sinonimo(causas,[razones,causas]).
 sinonimo(referencia,[referencia]).
-sinonimo(problematica,[problema,equivoco,incierto, problematica]).
+sinonimo(problematica,[problema,error,problematica]).
 
 %
 sintagma_nexo(Nexo) :-
@@ -195,7 +199,7 @@ inicio_de_conversacion(P):-
     append(S,N,P),
     write('Hola en que le puedo ayudar?'),nl,!.
 inicio_de_conversacion(_):-
-    write('Debe escribir segun el formato'),nl,fail.
+    write('Debe escribir segun el formato.'),nl,fail.
 
 mitad_de_conversacion(O):-
     sintagma_preguntaCompleja(O),
@@ -223,7 +227,7 @@ mitad_de_conversacion(O):-
     miembro(Y,O),!,
     solucionador().
 mitad_de_conversacion(_):-
-    write('Debe escribir segun el formato'),nl,fail.
+    write('Debe escribir segun el formato.'),nl,fail.
 
 semi_final_de_conversacion(O):-
     miembro(si,O),!,
@@ -233,7 +237,7 @@ semi_final_de_conversacion(O):-
     miembro(no, O),!,
     write('De acuerdo'),nl.
 semi_final_de_conversacion(_):-
-    write('Debe escribir segun el formato'),nl,fail.
+    write('Debe escribir segun el formato.'),nl,fail.
 
 final_de_conversacion(O):-
     despedidas(D),sustantivo(_,_,N),
