@@ -37,7 +37,9 @@ causa('- No tiene los drivers instalados.').
 causa('- La impresora no esta en la misma red que su computadora.').
 causa('- Su impresora no tiene tinta.').
 causa('- El cable de su impresora esta malo').
+causa('- Un componente puede estar malo').
 causa('- Su impresora puede estar sucia, por lo que se debe limpiar.').
+causa('- Le falta papel.').
 causa('- Los cabezales pueden estar desalineados.').
 
 % Hechos que contienen las preguntas que el sistema le realizara al
@@ -84,7 +86,7 @@ respuesta(alarmas, 'Lea el manual de usuario sobre esta alarma o luz indicadora'
 % estan constituidos por la palabra clave del problema y el link de la
 % pagina con la solucion a este.
 referencia(electricidad, 'https://www.yoreparo.com/es/impresoras/preguntas/831836/mi-impresora-no-enciende').
-referencia(drivers, 'http://support.ricoh.com/bb_v1oi/pub_e/oi_view/0001032/0001032602/view/Op_Guide/unv/0063.htm').
+referencia(drivers, 'http://support.ricoh.com/bb_v1oi/pub_e/oi_view/0001032/0001032602/view/Op_Guide/unv/0063.html').
 referencia(internet, 'https://techlandia.com/arreglar-impresora-conexion-offline-como_15198/').
 referencia(tinta, 'https://files.support.epson.com/htmldocs/xp201_/xp201_ug6/source/printers/source/ink_functions/tasks/xp200/removing_installing_cartridges_xp200.html').
 referencia(cable, 'https://www.steren.com.gt/computacion/cables-usb').

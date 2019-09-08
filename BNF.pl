@@ -100,6 +100,7 @@ conjucion([que]).
 
 %Estas son los adverbios  que posee la base de datos
 adverbio([de]).
+adverbio([del]).
 
 /*
 '########::'##::: ##:'########:
